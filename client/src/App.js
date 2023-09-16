@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Books from "./components/Books";
 import Create_Food from "./components/CreateFood";
 import Home from "./components/Home";
+import Receipe from "./components/Recipe";
 import SavedFood from "./components/SavedFood";
 import { useCookies } from "react-cookie";
 const App = () => {
@@ -27,6 +28,8 @@ const App = () => {
 				<Navbar />
 				<Routes>
 					<Route path='/' element={<Home />}></Route>
+					<Route path='/recipe/:id' element={<Receipe />}></Route>
+
 					<Route path='/login' element={<Login />}></Route>
 					<Route path='/register' element={<Register />}></Route>
 					<Route path='/create' element={<Create_Food />}></Route>

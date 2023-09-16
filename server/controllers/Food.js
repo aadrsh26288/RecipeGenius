@@ -45,6 +45,26 @@ const getFood = async (req, res) => {
 	});
 };
 
+// get foo by id
+const foodsCreatedbyuser =
+	(verifyToken,
+	async (req, res) => {
+		try {
+			const { id } = req.params; // Remove .id here
+
+			const allfoods = await foodeModel.find({ userOwner: id });
+
+			if (allfoods.length === 0) {
+				// Check if the array is empty
+				return res.status(404).json("Recipes not found");
+			} else {
+				return res.status(200).json(allfoods);
+			}
+		} catch (error) {
+			return res.status(500).json("Internal Server Error"); // Handle errors
+		}
+	});
+
 const saveFood = async (req, res) => {
 	const recipe = await foodeModel.findById(req.body.recipeID);
 	const user = await userModel.findById(req.body.userID);
@@ -72,6 +92,48 @@ const savedfoodId = async (req, res) => {
 	res.json({ savedFoods: savedID?.savedFoods });
 };
 
+const deleteFood = async (req, res) => {
+	const deleteById = await foodeModel.findByIdAndDelete(req.params.foodId);
+	if (!deleteById) {
+		return res.json("erro");
+	} else {
+		return res.json(deleteById);
+	}
+};
+
+// edit food
+const EditFood = async (req, res) => {
+	const { id } = req.params;
+	const { name, ingredients, instructions, imageUrl, cookingTime, userOwner } =
+		req.body;
+
+	try {
+		const updatedFood = await foodeModel.findByIdAndUpdate(
+			id,
+			{
+				name,
+				ingredients,
+				instructions,
+				imageUrl,
+				cookingTime,
+				userOwner,
+			},
+			{ new: true },
+		);
+
+		if (!updatedFood) {
+			return res
+				.status(404)
+				.json({ error: "Food not found or some other error" });
+		}
+
+		return res.status(200).json(updatedFood);
+	} catch (error) {
+		console.error("Error updating food:", error);
+		return res.status(500).json({ error: "Internal server error" });
+	}
+};
+
 module.exports = {
 	Allfoods,
 	createFood,
@@ -79,4 +141,7 @@ module.exports = {
 	saveFood,
 	getSavedfood,
 	savedfoodId,
+	foodsCreatedbyuser,
+	deleteFood,
+	EditFood,
 };

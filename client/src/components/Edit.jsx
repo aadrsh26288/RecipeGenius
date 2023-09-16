@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
 
-const CreateFood = () => {
-	// const userID = window.localStorage.getItem("userInfo")
-	const navigate = useNavigate();
+const EditFood = ({ id }) => {
+	console.log("ediitit", id);
 	const [cookies, _] = useCookies(["acces_token"]);
 	const userID = localStorage.getItem("userInfo")
 		? JSON.parse(localStorage.getItem("userInfo"))
@@ -16,8 +14,36 @@ const CreateFood = () => {
 		instructions: "",
 		imageUrl: "",
 		cookingTime: 0,
-		userOwner: userID,
+		userOwner: "",
 	});
+
+	useEffect(() => {
+		const fetchEditFood = async () => {
+			const editData = await axios.get(`http://localhost:8000/foods/${id}`);
+			console.log("data to be edit", editData.data);
+			if (editData.status === 200) {
+				const {
+					name,
+					instructions,
+					imageUrl,
+					ingredients,
+					cookingTime,
+					userOwner,
+				} = editData.data.data;
+
+				setFoods({
+					...foods, // Spread the existing state to keep other properties intact
+					name: name,
+					ingredients: ingredients,
+					instructions: instructions,
+					imageUrl: imageUrl,
+					cookingTime: cookingTime,
+					userOwner: userOwner,
+				});
+			}
+		};
+		fetchEditFood();
+	}, []);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -38,39 +64,25 @@ const CreateFood = () => {
 	const handleFoodAdd = () => {
 		setFoods({ ...foods, ingredients: [...foods.ingredients, ""] });
 	};
-	console.log("food", foods);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			await axios.post(
-				"http://localhost:8000/foods",
-				{ ...foods },
-				{ headers: { authorization: cookies.acces_token } },
-			);
+			await axios.put(`http://localhost:8000/foods/edit/${id}`, { ...foods });
 			alert("sucess");
 		} catch (e) {
 			console.log("error", e);
 		}
-		setFoods({
-			name: "",
-			ingredients: [""],
-			instructions: "",
-			imageUrl: "",
-			cookingTime: 0,
-			userOwner: "",
-		});
-		navigate("/");
 	};
 
 	return (
 		<div>
 			<p className='text-2xl font-bold text-center my-4 '>
-				Cerate Your Own Recepies
+				Update Your Recepies
 			</p>
 
 			<form
-				className='flex flex-col justify-center max-w-[70%] mx-auto'
+				className='flex flex-col justify-center max-w-[60%] mx-auto'
 				onSubmit={handleSubmit}>
 				<div>
 					<p>Name</p>
@@ -169,12 +181,12 @@ const CreateFood = () => {
 				</div>
 				<button
 					type='submit'
-					className='bg-black p-1  mt-3 rounded-md text-white'>
-					Submit
+					className='bg-black p-1 mb-5  mt-3 rounded-md text-white'>
+					Update
 				</button>
 			</form>
 		</div>
 	);
 };
 
-export default CreateFood;
+export default EditFood;

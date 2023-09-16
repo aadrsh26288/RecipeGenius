@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import { Link } from "react-router-dom";
+
 const Home = () => {
 	const [foods, setFoods] = useState([]);
 	const userId = JSON.parse(localStorage.getItem("userInfo"));
@@ -50,17 +52,19 @@ const Home = () => {
 		<div>
 			<h2 className='text-center text-[30px] font-bold'>All foods</h2>
 			<div className=''>
-				<div className=' max-w-[80%] mx-auto'>
+				<div className='md:px-0 px-2 md:max-w-[80%] mx-auto'>
 					{foods.map((food) => {
 						console.log(food);
 						return (
 							<div className='border-r-[12px] my-5 bg-gray-100 border-red-600 mt-2 flex gap-2 '>
 								<div className=''>
-									<img
-										className='w-[240px] h-full object-cover'
-										src={`${food.imageUrl}`}
-										alt={food.name}
-									/>
+									<Link to={`/recipe/${food._id}`}>
+										<img
+											className='w-[240px] h-full object-cover'
+											src={`${food.imageUrl}`}
+											alt={food.name}
+										/>
+									</Link>
 								</div>
 
 								<div className='w-full p-2'>
@@ -69,7 +73,7 @@ const Home = () => {
 											{food.name}
 										</p>
 										<p className='font-semibold text-slate-600 text-[13px]'>
-											CookingTime - {food.cookingTime}min
+											CookingTime{food.cookingTime}min
 										</p>
 									</div>
 
@@ -87,7 +91,7 @@ const Home = () => {
 										Ingredients
 									</p>
 									{/* <p className='flex gap-10'>{food.ingredients}</p> */}
-									<ul className='flex w-full gap-4 mt-1'>
+									<ul className='flex flex-wrap w-full gap-4 mt-1'>
 										{food.ingredients.map((ingredient, index) => (
 											<li
 												key={index}
