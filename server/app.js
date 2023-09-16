@@ -7,6 +7,11 @@ const cors = require("cors");
 
 app.use(cors());
 
+app.use(
+	cors({
+		origin: "https://recipe-genius-2idj.vercel.app/",
+	}),
+);
 // Allow specific origin(s)
 
 app.use(express.json());
