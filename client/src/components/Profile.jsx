@@ -13,7 +13,7 @@ const Profile = () => {
 	const [editId, setEditId] = useState("");
 	const Createdrecpies = async () => {
 		const result = await axios.get(
-			`https://recipe-genius-hlwb.vercel.app/foods/yourrecipe/${id}`,
+			`http://localhost:8000/foods/yourrecipe/${id}`,
 			{ headers: { authorization: cookies.acces_token } },
 		);
 
@@ -26,9 +26,7 @@ const Profile = () => {
 	const deleteFood = async (foodId) => {
 		if (window.confirm("Are you sure you want to delete")) {
 			try {
-				await axios.delete(
-					`https://recipe-genius-hlwb.vercel.app/foods/${foodId}`,
-				);
+				await axios.delete(`http://localhost:8000/foods/${foodId}`);
 				console.log("deleted");
 				Createdrecpies();
 			} catch (err) {
