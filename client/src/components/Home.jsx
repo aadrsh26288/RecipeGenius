@@ -12,7 +12,7 @@ const Home = () => {
 	useEffect(() => {
 		const fetchFood = async () => {
 			try {
-				const data = await axios.get("http://localhost:8000/foods");
+				const data = await axios.get("https://recipe-genius.vercel.app/foods");
 				setFoods(data.data);
 			} catch (err) {
 				console.log(err);

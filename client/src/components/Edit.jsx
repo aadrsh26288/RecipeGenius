@@ -68,7 +68,9 @@ const EditFood = ({ id }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			await axios.put(`http://localhost:8000/foods/edit/${id}`, { ...foods });
+			await axios.put(`https://recipe-genius.vercel.app/foods/edit/${id}`, {
+				...foods,
+			});
 			alert("sucess");
 		} catch (e) {
 			console.log("error", e);

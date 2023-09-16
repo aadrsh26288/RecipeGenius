@@ -15,10 +15,13 @@ const Login = () => {
 		console.log("starting");
 
 		try {
-			const data = await axios.post("http://localhost:8000/auth/login", {
-				email,
-				password,
-			});
+			const data = await axios.post(
+				"https://recipe-genius.vercel.app/auth/login",
+				{
+					email,
+					password,
+				},
+			);
 			console.log("sucess");
 			console.log(data);
 			setUserData(data.data);

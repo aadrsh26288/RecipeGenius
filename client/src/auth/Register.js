@@ -8,10 +8,13 @@ const RegisterForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const res = await axios.post("http://localhost:8000/auth/register", {
-			email,
-			password,
-		});
+		const res = await axios.post(
+			"https://recipe-genius.vercel.app/auth/register",
+			{
+				email,
+				password,
+			},
+		);
 		setMessage("sucess");
 	};
 

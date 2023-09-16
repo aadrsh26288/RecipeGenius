@@ -7,7 +7,9 @@ const Receipe = () => {
 	const { id } = useParams();
 	useEffect(() => {
 		const getRecipe = async () => {
-			const res = await axios.get(`http://localhost:8000/foods/${id}`);
+			const res = await axios.get(
+				`https://recipe-genius.vercel.app/foods/${id}`,
+			);
 			setData(res.data);
 		};
 		getRecipe();

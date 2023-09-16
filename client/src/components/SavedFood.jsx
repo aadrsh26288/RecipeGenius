@@ -6,7 +6,7 @@ const SavedFood = () => {
 	useEffect(() => {
 		const getSavedfood = async () => {
 			const res = await axios.get(
-				`http://localhost:8000/foods/savedfood/${userId}`,
+				`https://recipe-genius.vercel.app/foods/savedfood/${userId}`,
 			);
 			setSavedfood(res.data.data);
 		};
