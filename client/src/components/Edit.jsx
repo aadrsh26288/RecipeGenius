@@ -19,7 +19,9 @@ const EditFood = ({ id }) => {
 
 	useEffect(() => {
 		const fetchEditFood = async () => {
-			const editData = await axios.get(`http://localhost:8000/foods/${id}`);
+			const editData = await axios.get(
+				`https://recipe-genius-hlwb.vercel.app/foods/${id}`,
+			);
 			console.log("data to be edit", editData.data);
 			if (editData.status === 200) {
 				const {
@@ -68,7 +70,10 @@ const EditFood = ({ id }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			await axios.put(`http://localhost:8000/foods/edit/${id}`, { ...foods });
+			await axios.put(
+				`https://recipe-genius-hlwb.vercel.app/foods/edit/${id}`,
+				{ ...foods },
+			);
 			alert("sucess");
 		} catch (e) {
 			console.log("error", e);

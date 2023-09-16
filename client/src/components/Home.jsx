@@ -12,7 +12,9 @@ const Home = () => {
 	useEffect(() => {
 		const fetchFood = async () => {
 			try {
-				const data = await axios.get("http://localhost:8000/foods");
+				const data = await axios.get(
+					"https://recipe-genius-hlwb.vercel.app/foods",
+				);
 				setFoods(data.data);
 			} catch (err) {
 				console.log(err);
@@ -21,7 +23,7 @@ const Home = () => {
 
 		const usersavedFood = async () => {
 			const res = await axios.get(
-				`http://localhost:8000/foods/savedfood/id/${userId}`,
+				`https://recipe-genius-hlwb.vercel.app/foods/savedfood/id/${userId}`,
 			);
 			setSaved(res.data.savedFoods);
 			console.log("saved foods", res.data);
@@ -35,7 +37,7 @@ const Home = () => {
 
 	const saveFood = async (foodId) => {
 		try {
-			await axios.put("http://localhost:8000/foods", {
+			await axios.put("https://recipe-genius-hlwb.vercel.app/foods", {
 				recipeID: foodId,
 				userID: userId,
 			});

@@ -44,7 +44,7 @@ const CreateFood = () => {
 		e.preventDefault();
 		try {
 			await axios.post(
-				"http://localhost:8000/foods",
+				"https://recipe-genius-hlwb.vercel.app/",
 				{ ...foods },
 				{ headers: { authorization: cookies.acces_token } },
 			);
