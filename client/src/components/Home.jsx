@@ -21,7 +21,7 @@ const Home = () => {
 
 		const usersavedFood = async () => {
 			const res = await axios.get(
-				`http://localhost:8000/foods/savedfood/id/${userId}`,
+				`https://recipe-genius.vercel.app/foods/savedfood/id/${userId}`,
 			);
 			setSaved(res.data.savedFoods);
 			console.log("saved foods", res.data);
@@ -35,7 +35,7 @@ const Home = () => {
 
 	const saveFood = async (foodId) => {
 		try {
-			await axios.put("http://localhost:8000/foods", {
+			await axios.put("https://recipe-genius.vercel.app/foods", {
 				recipeID: foodId,
 				userID: userId,
 			});
