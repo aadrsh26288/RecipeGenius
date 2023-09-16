@@ -9,7 +9,7 @@ app.use(cors());
 
 app.use(
 	cors({
-		origin: "https://recipe-genius-2idj.vercel.app/",
+		origin: "https://recipe-genius.vercel.app/",
 	}),
 );
 // Allow specific origin(s)
