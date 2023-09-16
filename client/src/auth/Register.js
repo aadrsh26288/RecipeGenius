@@ -9,7 +9,7 @@ const RegisterForm = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const res = await axios.post(
-			"https://recipe-genius-zbkr.vercel.app/auth/register",
+			"https://recipe-genius-hlwb.vercel.app/auth/register",
 			{
 				email,
 				password,
