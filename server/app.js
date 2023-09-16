@@ -6,9 +6,14 @@ const connectDB = require("./connection/connection");
 const cors = require("cors");
 
 app.use(cors());
+const allowedOrigins = [
+	"http://localhost:3000",
+	"https://recipe-genius-2idj.vercel.app/",
+	// Add other origins as needed
+];
 
 const corsOptions = {
-	origin: "https://recipe-genius-2idj.vercel.app/",
+	origin: allowedOrigins,
 	credentials: true, //access-control-allow-credentials:true
 	optionSuccessStatus: 200,
 };
