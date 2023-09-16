@@ -8,7 +8,7 @@ const cors = require("cors");
 app.use(cors());
 
 const corsOptions = {
-	origin: "https://recipe-genius.vercel.app/",
+	origin: "https://recipe-genius-2idj.vercel.app/",
 	credentials: true, //access-control-allow-credentials:true
 	optionSuccessStatus: 200,
 };
