@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { useCookies } from "react-cookie";
+import Logo from "../img/fast-food.png";
 const Navbar = () => {
 	const [cookies, setCookies] = useCookies(["access_token"]);
 	const navigate = useNavigate();
@@ -11,25 +12,26 @@ const Navbar = () => {
 	};
 	return (
 		<div>
-			<div className='flex text-[14px] justify-between px-5  w-full items-center gap-10 bg-black text-white  '>
-				<div>
+			<div className='flex text-[14px] justify-between px-5  w-full items-center md:gap-10 bg-black text-white  '>
+				<div className='h-14 w-14 flex items-center '>
 					<Link to='/'>
-						<img
-							className='w-14 h-14'
-							src='https://online.kfc.co.in/static/media/kfcLogo.492728c6.svg'
-						/>
+						<img src={Logo}></img>
 					</Link>
 				</div>
 
 				<div className='flex w-full items-center gap-10 '>
-					<Link to='/'>
+					<Link to='/' className='hidden md:inline'>
 						<p>Home</p>
 					</Link>
 
 					{/* <Link to='/recepies'>Recepies</Link> */}
-					<Link to='/create'>Create Recepies</Link>
+					<Link to='/create' className='hidden md:inline'>
+						Create Recpies
+					</Link>
 					{cookies.access_token ? (
-						<Link to='/savedfoods'>Saved Recepies</Link>
+						<Link to='/savedfoods' className='hidden md:inline'>
+							Saved Recpies
+						</Link>
 					) : (
 						""
 					)}

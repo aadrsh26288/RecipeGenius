@@ -70,7 +70,7 @@ const CreateFood = () => {
 			</p>
 
 			<form
-				className='flex flex-col justify-center max-w-[70%] mx-auto'
+				className='flex flex-col bg-white p-5 rounded-lg px-10 mb-5 justify-center max-w-[50%] mx-auto'
 				onSubmit={handleSubmit}>
 				<div>
 					<p>Name</p>
@@ -122,7 +122,7 @@ const CreateFood = () => {
 						onClick={() => {
 							handleFoodAdd();
 						}}>
-						Add Ingredient
+						Add
 					</button>
 				</div>
 

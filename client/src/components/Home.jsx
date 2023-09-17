@@ -46,6 +46,12 @@ const Home = () => {
 	};
 	// console.log(foods);
 
+	if (foods.length === 0) {
+		return (
+			<div className='text-center mt-52 text-2xl font-bold'>Loading...</div>
+		);
+	}
+
 	const isSaved = (id) => saved.includes(id);
 
 	return (
@@ -56,11 +62,11 @@ const Home = () => {
 					{foods.map((food) => {
 						console.log(food);
 						return (
-							<div className='border-r-[12px] my-5 bg-gray-100 border-red-600 mt-2 flex gap-2 '>
+							<div className='rounded-lg border-r-[12px] my-5 bg-white border-red-600 mt-2 grid  md:flex gap-2 '>
 								<div className=''>
 									<Link to={`/recipe/${food._id}`}>
 										<img
-											className='w-[240px] h-full object-cover'
+											className='md:w-[240px] rounded-l-lg w-full h-full object-cover'
 											src={`${food.imageUrl}`}
 											alt={food.name}
 										/>
@@ -73,7 +79,7 @@ const Home = () => {
 											{food.name}
 										</p>
 										<p className='font-semibold text-slate-600 text-[13px]'>
-											CookingTime{food.cookingTime}min
+											CookingTime - {food.cookingTime}min
 										</p>
 									</div>
 
@@ -110,7 +116,7 @@ const Home = () => {
 												}}
 												disabled={isSaved(food._id)}>
 												{" "}
-												{saved.includes(food._id) ? "Aleady Saved" : "Save"}
+												{saved.includes(food._id) ? "Saved" : "Save"}
 											</button>
 										) : (
 											""

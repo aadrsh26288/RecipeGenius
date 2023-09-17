@@ -14,6 +14,12 @@ const SavedFood = () => {
 		getSavedfood();
 	}, []);
 
+	if (savedfoods.length === 0) {
+		return (
+			<div className='text-center mt-52 text-2xl font-bold'>Loading...</div>
+		);
+	}
+
 	console.log("saved foods by user", savedfoods);
 	return (
 		<div>

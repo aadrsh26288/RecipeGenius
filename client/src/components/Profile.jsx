@@ -42,6 +42,12 @@ const Profile = () => {
 		setModal(!modal);
 	};
 
+	if (yourrecipes.length === 0) {
+		return (
+			<div className='text-center mt-52 text-2xl font-bold'>Loading...</div>
+		);
+	}
+
 	return (
 		<>
 			{modal && (
@@ -58,14 +64,14 @@ const Profile = () => {
 					<EditFood id={editId} />
 				</div>
 			)}
-			<div className='max-w-[80%] mx-auto'>
+			<div className='sm:max-w-[80%] mx-auto'>
 				<p className='text-center my-5 text-2xl font-bold'>welcome</p>
 				{/* <p>{id}</p> */}
 
 				<div className='flex flex-col gap-8 mt-10'>
 					{yourrecipes.map((recipes, index) => {
 						return (
-							<div className='grid grid-cols-4 max-w-[70%] gap-12 mx-auto p-1'>
+							<div className='flex sm:grid grid-cols-4 sm:max-w-[70%] gap-4 sm:gap-12 mx-auto p-1'>
 								<span className='text-lg font-bold'>{index}</span>
 								<img
 									className='w-[50px] object-cover rounded-md '
