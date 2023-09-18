@@ -25,7 +25,6 @@ const login = async (req, res) => {
 
 	const token = jwt.sign({ id: user._id }, "aadrsh");
 	res.json({ token, userId: user._id, userEmail: user.email });
-	// res.send("login sucess");
 };
 
 const verifyToken = (req, res, next) => {

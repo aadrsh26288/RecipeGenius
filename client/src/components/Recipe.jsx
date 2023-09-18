@@ -21,10 +21,12 @@ const Receipe = () => {
 	}
 
 	return (
-		<div className='grid grid-cols-2 mt-10 max-w-[90%] mx-auto gap-8'>
+		<div className='grid sm:grid-cols-2 mt-10 max-w-[90%] mx-auto gap-8'>
 			<div className='w-full'>
 				<img src={data.data.imageUrl} className='object-cover w-[600px] ' />
-				<button className='my-5 bg-black text-white w-full p-2'>Save</button>
+				<button className='my-5 bg-black hidden sm:inline text-white w-full p-2'>
+					Save
+				</button>
 			</div>
 			<div>
 				<h2 className='text-4xl font-semibold'>{data.data.name}</h2>
@@ -64,6 +66,9 @@ const Receipe = () => {
 						})}
 					</ul>
 				</div>
+				<button className='my-5 bg-black inline sm:hidden text-white w-full p-2'>
+					Save
+				</button>
 			</div>
 		</div>
 	);

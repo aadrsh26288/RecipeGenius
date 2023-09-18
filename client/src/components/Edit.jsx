@@ -8,6 +8,8 @@ const EditFood = ({ id }) => {
 	const userID = localStorage.getItem("userInfo")
 		? JSON.parse(localStorage.getItem("userInfo"))
 		: "";
+	// const userID = user.id;
+
 	const [foods, setFoods] = useState({
 		name: "",
 		ingredients: [""],
@@ -78,13 +80,13 @@ const EditFood = ({ id }) => {
 	};
 
 	return (
-		<div>
+		<div className='mt-10'>
 			<p className='text-2xl font-bold text-center my-4 '>
 				Update Your Recepies
 			</p>
 
 			<form
-				className='flex flex-col justify-center max-w-[60%] mx-auto'
+				className='flex flex-col justify-center mx-3 sm:max-w-[60%] sm:mx-auto'
 				onSubmit={handleSubmit}>
 				<div>
 					<p>Name</p>

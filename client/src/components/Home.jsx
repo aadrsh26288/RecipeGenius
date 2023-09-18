@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
 	const [foods, setFoods] = useState([]);
-	const userId = JSON.parse(localStorage.getItem("userInfo"));
+	const user = JSON.parse(localStorage.getItem("userInfo"));
+	const userId = user.id;
 
 	const [cookies] = useCookies(["access_token"]);
 	const [saved, setSaved] = useState([]);
@@ -73,7 +74,7 @@ const Home = () => {
 									</Link>
 								</div>
 
-								<div className='w-full p-2'>
+								<div className='w-full p-2 pb-4'>
 									<div className='flex justify-between items-center w-full'>
 										<p className='text-xl font-semibold capitalize	'>
 											{food.name}
@@ -83,7 +84,7 @@ const Home = () => {
 										</p>
 									</div>
 
-									<p className='text-sm text-gray-600'>
+									<p className='sm:inline hidden text-sm text-gray-600'>
 										Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 										Aliquid atque, ratione sit autem debitis obcaecati itaque
 										quasi, eius neque excepturi mollitia doloribus iusto nulla,
@@ -92,6 +93,13 @@ const Home = () => {
 										maxime. Tempora quisquam sed veritatis asperiores vero
 										temporibus sunt incidunt perspiciatis distinctio saepe, enim
 										eos, mollitia molestiae ab nemo.
+									</p>
+
+									<p className='inline sm:hidden text-sm text-gray-600'>
+										Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+										Aliquid atque, ratione sit autem debitis obcaecati itaque
+										quasi, eius neque excepturi mollitia doloribus iusto nulla,
+										cum animi natus quam? Quaerat, fugiat.
 									</p>
 									<p className=' mt-2 font-semibold text-md  capitalize '>
 										Ingredients
@@ -107,7 +115,7 @@ const Home = () => {
 										))}
 									</ul>
 
-									<div className='flex justify-end w-full'>
+									<div className='flex  justify-center sm:justify-end w-full'>
 										{cookies.access_token ? (
 											<button
 												className='mt-4 bg-black text-white w-[150px] p-1 hover:bg-white hover:text-black cursor-pointer  hover:border hover:border-[1px] hover:border-black hover:duration-200 rounded-md'

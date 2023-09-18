@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import { AiOutlineClose } from "react-icons/ai";
 import EditFood from "./Edit";
 const Profile = () => {
-	const id = localStorage.getItem("userInfo")
+	const user = localStorage.getItem("userInfo")
 		? JSON.parse(localStorage.getItem("userInfo"))
 		: "";
+
+	const id = user.id;
+
 	// console.log("user", userinfo);
 	const [cookies, _] = useCookies(["acces_token"]);
 	const [yourrecipes, setYourrecipes] = useState([]);
@@ -52,14 +56,13 @@ const Profile = () => {
 		<>
 			{modal && (
 				<div className='h-screen absolute bg-white w-full '>
-					<div>
-						<p>modal open</p>
-						<button
+					<div className='text-3xl  p-3 cursor-pointer font-bold float-right'>
+						<AiOutlineClose
+							className=''
 							onClick={() => {
 								setModal(false);
-							}}>
-							close
-						</button>
+							}}
+						/>
 					</div>
 					<EditFood id={editId} />
 				</div>

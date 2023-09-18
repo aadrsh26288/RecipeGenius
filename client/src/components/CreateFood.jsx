@@ -7,9 +7,11 @@ const CreateFood = () => {
 	// const userID = window.localStorage.getItem("userInfo")
 	const navigate = useNavigate();
 	const [cookies, _] = useCookies(["acces_token"]);
-	const userID = localStorage.getItem("userInfo")
+	const user = localStorage.getItem("userInfo")
 		? JSON.parse(localStorage.getItem("userInfo"))
 		: "";
+	const userID = user.id;
+
 	const [foods, setFoods] = useState({
 		name: "",
 		ingredients: [""],
@@ -70,7 +72,7 @@ const CreateFood = () => {
 			</p>
 
 			<form
-				className='flex flex-col bg-white p-5 rounded-lg px-10 mb-5 justify-center max-w-[50%] mx-auto'
+				className='flex flex-col bg-white p-5 rounded-lg px-10 mb-5 justify-center mx-3 sm:max-w-[50%] sm:mx-auto'
 				onSubmit={handleSubmit}>
 				<div>
 					<p>Name</p>

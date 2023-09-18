@@ -8,13 +8,13 @@ const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [userData, setUserData] = useState("");
+	const [loading, setLoading] = useState(false);
 	const [, setCookies] = useCookies(["access_token"]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log("starting");
-
 		try {
+			setLoading(true);
 			const data = await axios.post(
 				"https://recipe-genius.vercel.app/auth/login",
 				{
@@ -22,20 +22,24 @@ const Login = () => {
 					password,
 				},
 			);
-			console.log("sucess");
-			console.log(data);
-			setUserData(data.data);
+			console.log("res data", data);
+			setUserData(data);
 			setCookies("access_token", data.data.token);
 			const userInfo = localStorage.setItem(
 				"userInfo",
-				JSON.stringify(data.data.userId),
+				JSON.stringify({
+					id: data.data.userId,
+					userEmail: data.data.userEmail,
+				}),
 			);
 			navigate("/profile");
 		} catch (e) {
+			setLoading(false);
 			console.log("error", e);
 		}
 	};
 
+	console.log("logged data", userData);
 	return (
 		<div className='mt-20  sm:max-w-[60%] sm:mx-auto mx-3  bg-white rounded-lg p-10'>
 			<h2 className='text-2xl font-semibold text-center my-3'>Login</h2>
@@ -67,10 +71,11 @@ const Login = () => {
 						required
 					/>
 				</div>
+
 				<button
 					type='submit'
 					className='bg-red-600 mt-4 p-1 text-lg text-white rounded-md'>
-					Login
+					{loading === true ? "please wait..." : "login"}
 				</button>
 			</form>
 		</div>
