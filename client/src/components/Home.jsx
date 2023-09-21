@@ -52,7 +52,6 @@ const Home = () => {
 			<div className='text-center mt-52 text-2xl font-bold'>Loading...</div>
 		);
 	}
-
 	const isSaved = (id) => saved.includes(id);
 
 	return (

@@ -50,12 +50,11 @@ const foodsCreatedbyuser =
 	(verifyToken,
 	async (req, res) => {
 		try {
-			const { id } = req.params; // Remove .id here
+			const { id } = req.params;
 
 			const allfoods = await foodeModel.find({ userOwner: id });
 
 			if (allfoods.length === 0) {
-				// Check if the array is empty
 				return res.status(404).json("Recipes not found");
 			} else {
 				return res.status(200).json(allfoods);
@@ -70,7 +69,7 @@ const saveFood = async (req, res) => {
 	const user = await userModel.findById(req.body.userID);
 	try {
 		user.savedFoods.push(recipe);
-		await user.save();
+
 		res
 			.status(201)
 			.json({ message: "usccess", savedRecipes: user.savedRecipes });
