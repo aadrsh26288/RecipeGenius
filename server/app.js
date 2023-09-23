@@ -9,6 +9,7 @@ app.use(cors());
 const allowedOrigins = [
 	"http://localhost:3000",
 	"https://recipe-genius-2idj.vercel.app/",
+	"https://recipe-genius-jagn.vercel.app/",
 	// Add other origins as needed
 ];
 
