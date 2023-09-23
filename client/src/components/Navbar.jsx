@@ -45,7 +45,6 @@ const Navbar = () => {
 						<Link to='/profile' className='flex capitalize items-center gap-2'>
 							{" "}
 							<FaUser className='text-lg' />
-							{userId && <p>{userId.userEmail.match(/^[^@]*/)[0]}</p>}
 						</Link>
 
 						<Link to='/register'>Register</Link>
