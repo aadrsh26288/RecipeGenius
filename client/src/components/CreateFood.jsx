@@ -72,7 +72,7 @@ const CreateFood = () => {
 			</p>
 
 			<form
-				className='flex flex-col bg-white p-5 rounded-lg px-10 mb-5 justify-center mx-3 sm:max-w-[50%] sm:mx-auto'
+				className='flex flex-col bg-white p-5 rounded-lg px-10 mb-5 justify-center mx-3  sm:max-w-[50%] sm:mx-auto'
 				onSubmit={handleSubmit}>
 				<div>
 					<p>Name</p>

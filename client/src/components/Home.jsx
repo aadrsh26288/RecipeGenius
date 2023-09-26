@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
 	const [foods, setFoods] = useState([]);
-	const user = JSON.parse(localStorage.getItem("userInfo"));
+	const user = localStorage.getItem("userInfo")
+		? JSON.parse(localStorage.getItem("userInfo"))
+		: "";
 	const userId = user.id;
 
 	const [cookies] = useCookies(["access_token"]);
@@ -56,13 +58,13 @@ const Home = () => {
 
 	return (
 		<div>
-			<h2 className='text-center text-[30px] font-bold'>All foods</h2>
+			<h2 className='text-center text-[30px] font-bold'>All Recpies</h2>
 			<div className=''>
 				<div className='md:px-0 px-2 md:max-w-[80%] mx-auto'>
 					{foods.map((food) => {
 						console.log(food);
 						return (
-							<div className='rounded-lg border-r-[12px] my-5 bg-white border-red-600 mt-2 grid  md:flex gap-2 '>
+							<div className='rounded-lg sm:border-r-[12px] my-5 bg-white border-red-600 mt-2 grid  md:flex gap-2 '>
 								<div className=''>
 									<Link to={`/recipe/${food._id}`}>
 										<img
@@ -87,11 +89,7 @@ const Home = () => {
 										Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 										Aliquid atque, ratione sit autem debitis obcaecati itaque
 										quasi, eius neque excepturi mollitia doloribus iusto nulla,
-										cum animi natus quam? Quaerat, fugiat. Placeat id sint
-										dolores nesciunt facilis amet ducimus nostrum culpa possimus
-										maxime. Tempora quisquam sed veritatis asperiores vero
-										temporibus sunt incidunt perspiciatis distinctio saepe, enim
-										eos, mollitia molestiae ab nemo.
+										cum animi natus quam? Quaerat, fugiat.
 									</p>
 
 									<p className='inline sm:hidden text-sm text-gray-600'>

@@ -41,7 +41,7 @@ const Navbar = () => {
 						)}
 					</div>
 
-					<div className='flex items-center gap-6'>
+					<div className='flex items-center gap-6 pr-4'>
 						<Link to='/profile' className='flex capitalize items-center gap-2'>
 							{" "}
 							<FaUser className='text-lg' />
@@ -65,11 +65,11 @@ const Navbar = () => {
 			{/* for mobile ui */}
 			<div className='sm:hidden bg-gray-300 w-full flex items-center justify-center gap-8 p-2'>
 				<Link to='/create'>
-					<p className='font-semibold'>Create Recpie</p>
+					<p className='font-semibold'>Create </p>
 				</Link>
 
 				<Link to='/saved'>
-					<p className='font-semibold'>Saved Recpie</p>
+					<p className='font-semibold'>Saved </p>
 				</Link>
 				<Link to='/profile'>
 					<p className='font-semibold'>Profile</p>
