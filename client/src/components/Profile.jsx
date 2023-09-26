@@ -9,6 +9,7 @@ const Profile = () => {
 		: "";
 
 	const id = user.id;
+	const email = user.userEmail;
 
 	// console.log("user", userinfo);
 	const [cookies, _] = useCookies(["acces_token"]);
@@ -68,7 +69,7 @@ const Profile = () => {
 				</div>
 			)}
 			<div className='sm:max-w-[80%] mx-auto'>
-				<p className='text-center my-5 text-2xl font-bold'>welcome</p>
+				<p className='text-center my-5 text-2xl font-bold'>{email}</p>
 				{/* <p>{id}</p> */}
 
 				<div className='flex flex-col gap-8 mt-10'>
