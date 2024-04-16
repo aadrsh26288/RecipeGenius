@@ -89,7 +89,7 @@ const Home = () => {
 										Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 										Aliquid atque, ratione sit autem debitis obcaecati itaque
 										quasi, eius neque excepturi mollitia doloribus iusto nulla,
-										cum animi natus quam? Quaerat, fugiat.
+										cum animi dfv natus quam? Quaerat, fugiat.
 									</p>
 
 									<p className='inline sm:hidden text-sm text-gray-600'>
